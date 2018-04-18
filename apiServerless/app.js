@@ -9,7 +9,7 @@ exports.handler = function(event, context, callback) {
   var votedFor = JSON.parse(event['body'])['Body']//.toUpperCase().trim();
   if (['ACCESS'].indexOf(votedFor) >= 0) {
     /* Add randomness to our value to help spread across partitions */
-    votedForHash = votedFor + "." + Math.floor((Math.random() * 1000) + 1).toString();
+    votedForHash = votedFor + "." + Math.floor((Math.random() * 10000) + 1).toString();
     /* ...updateItem into our DynamoDB database */
     var tableName = 'VoteApp';
     dynamodb.updateItem({
